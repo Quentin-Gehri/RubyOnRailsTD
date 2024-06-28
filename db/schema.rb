@@ -10,11 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_15_131818) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_28_094027) do
   create_table "clients", force: :cascade do |t|
     t.string "nom"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "reparations", force: :cascade do |t|
+    t.string "appareil"
+    t.text "description"
+    t.date "date_depot"
+    t.string "statut"
+    t.integer "client_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_reparations_on_client_id"
+  end
+
+  add_foreign_key "reparations", "clients"
 end

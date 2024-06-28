@@ -7,3 +7,46 @@
                     turbo_confirm: "Are you sure?"
                   } %></li>
 </ul>
+
+<h2>Reparation</h2>
+<% @client.reparations.each do |reparation| %>
+  <p>
+    <strong>Appareil:</strong>
+    <%= reparation.appareil %>
+  </p>
+
+  <p>
+    <strong>Description</strong>
+    <%= reparation.description %>
+  </p>
+
+  <p>
+    <strong>Date de depot:</strong>
+    <%= reparation.date_depot %>
+  </p>
+
+  <p>
+    <strong>Statut:</strong>
+    <%= reparation.statut %>
+  </p>
+<% end %>
+
+
+<h2>Ajouter une reparation:</h2>
+<%= form_with model: [ @client, @client.reparations.build ] do |form| %>
+  <p>
+    <%= form.label :appareil %><br>
+    <%= form.text_field :appareil %>
+  </p>
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </p>
+  <p>
+    <%= form.label :statut %><br>
+    <%= form.text_field :statut%><br>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

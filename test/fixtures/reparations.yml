@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  appareil: MyString
+  description: MyText
+  date_depot: 2024-06-28
+  statut: MyString
+  client: one
+
+two:
+  appareil: MyString
+  description: MyText
+  date_depot: 2024-06-28
+  statut: MyString
+  client: two
