@@ -1,6 +1,7 @@
 class ClientsController < ApplicationController
   def index
     @clients = Client.all
+    @reparations = Reparation.all
   end
 
   def show
@@ -15,7 +16,7 @@ class ClientsController < ApplicationController
     @client = Client.new(client_params)
 
     if @client.save
-      redirect_to @client
+      redirect_to root_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,7 +30,7 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
 
     if @client.update(client_params)
-      redirect_to @client
+      redirect_to root_path
     else
       render :edit, status: :unprocessable_entity
     end

@@ -1,0 +1,18 @@
+<%= form_with(model: [@client, @reparation], local: true) do |form| %>
+  <p>
+    <%= form.label :appareil %><br>
+    <%= form.text_field :appareil %>
+  </p>
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </p>
+  <p>
+    <%= form.label :statut %><br>
+    <%= form.text_field :statut %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
