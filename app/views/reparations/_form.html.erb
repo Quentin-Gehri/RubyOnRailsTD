@@ -7,10 +7,10 @@
     <%= form.label :description %><br>
     <%= form.text_area :description %>
   </p>
-  <p>
-    <%= form.label :statut %><br>
-    <%= form.text_field :statut %>
-  </p>
+  <div class="field">
+    <%= form.label :statut %>
+    <%= form.select :statut, @statuts %>
+  </div>
   <p>
     <%= form.submit %>
   </p>

@@ -1,12 +1,10 @@
 class Reparation < ApplicationRecord
   belongs_to :client
 
-  before_create :set_date_depot
+  before_create :set_date_depot, :set_statut
   
   validates :appareil, presence: true
   validates :description, presence: true
-  validates :date_depot, presence: true
-  validates :statut, presence: true
 
   private
 
@@ -14,7 +12,7 @@ class Reparation < ApplicationRecord
     self.date_depot = Time.current
   end
 
-  def set_status
-    self.status = "A faire"
+  def set_statut
+    self.statut = "A faire"
   end
 end

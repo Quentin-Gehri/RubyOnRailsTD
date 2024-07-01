@@ -1,0 +1,34 @@
+<h1>New Reparation</h1>
+
+<%= form_with(model: @reparation, local: true) do |form| %>
+  <% if @reparation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reparation.errors.count, "error") %> prohibited this reparation from being saved:</h2>
+
+      <ul>
+        <% @reparation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :appareil %>
+    <%= form.text_field :appareil %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :client_id %>
+    <%= form.collection_select :client_id, @clients, :id, :nom, prompt: "Select Client" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :clients do 
     resources :reparations
   end
+
+  resources :reparations, only: [:new, :create, :index, :show]
 end
