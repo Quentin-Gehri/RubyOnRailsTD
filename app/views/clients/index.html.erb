@@ -12,39 +12,33 @@
         <!-- <button onclick="document.getElementById('addClientModal').style.display='block'">Ajouter un Client</button>
         <button onclick="document.getElementById('addRepairModal').style.display='block'">Ajouter une Réparation</button> -->
         <%= link_to "Ajouter un Client", new_client_path, class: "button" %>
-        <%= link_to "Ajouter une Réparation", new_reparation_path, class:"button" %>        
+        <%= link_to "Ajouter une Réparation", new_reparation_path, class:"button" %>
     </header>
 
-<h1>Clients</h1>
 
-<ul>
-  <% @clients.each do |client| %>
-    <li>
-	<%= link_to client.nom, client_path(client) %>
-    </li>
-  <% end %>
-</ul>
+    <div class="container">
+       <h2>Réparations à Faire</h2>
+          <div class="repair-list-container">
+             <ul class="repair-list">
+                <% @reparations.each do |rep| %>
+                   <li>
+                      <h3>Client: <%= rep.client.nom %></h3>
+                      <p>Appareil: <%= rep.appareil %></p>
+                      <p>Description: <%= rep.description %></p>
+                      <p>Date de depot: <%= rep.date_depot %></p>
+                      <p>Statut: <%= rep.statut %></p>
+                      <br>
+                      <p><%= link_to "Modifier", edit_client_reparation_path(rep.client, rep), class: "button" %></p>
+                      <br>
+                    </li>
+                 <% end %>
+               </ul>
+             </div>
+      </div>
 
-<div class="container">
-  <h2>Réparations à Faire</h2>
-      <div class="repair-list-container">
-         <ul class="repair-list">
-            <% @reparations.each do |rep| %>
-                <li>
-                    <h3>Client: <%= rep.client.nom %></h3>
-                    <p>Appareil: <%= rep.appareil %></p>
-                    <p>Description: <%= rep.description %></p>  
-                    <p>Date de depot: <%= rep.date_depot %></p>
-                    <p>Statut: <%= rep.statut %></p>
-                    <br>
-                    <p><%= link_to "Modifier", edit_client_reparation_path(rep.client, rep), class: "button" %></p>
-                    <br>
-                </li>
-            <% end %>
-      </ul>
-   </div>
-</div>
-
+      <footer>
+         <p>&copy; 2024 Réparateur Expert. Tous droits réservés.</p>
+      </footer>
 
 </body>
 </html>
