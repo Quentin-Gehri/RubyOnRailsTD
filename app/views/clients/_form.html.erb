@@ -1,9 +1,14 @@
 <%= form_with model: client do |form| %>
   <div>
     <%= form.label :nom %><br>
-    <%= form.text_field :nom %>
+    <%= form.text_field :nom %><br>
     <% client.errors.full_messages_for(:nom).each do |message| %>
-      <div><%= message %></div>
+          <li><%= message %></li>
+    <% end %>
+    <%= form.label :email %><br>
+    <%= form.email_field :email %>
+    <% client.errors.full_messages_for(:email).each do |message| %>
+          <li><%= message %></li>
     <% end %>
   </div>
 

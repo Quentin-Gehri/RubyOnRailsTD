@@ -22,7 +22,7 @@
              <ul class="repair-list">
                 <% @reparations.each do |rep| %>
                    <li>
-                      <h3>Client: <%= rep.client.nom %></h3>
+                      <h3>Client: <%= rep.client.nom %> // <%= rep.client.email %></h3>
                       <p>Appareil: <%= rep.appareil %></p>
                       <p>Description: <%= rep.description %></p>
                       <p>Date de depot: <%= rep.date_depot %></p>
