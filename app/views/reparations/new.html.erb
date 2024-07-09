@@ -4,7 +4,7 @@
         <span class="close" onclick="document.getElementById('addRepairModal').style.display='none'">&times;</span>
 <h1>Ajouter une Réparation</h1>
 
-<%= form_with(model: @reparation, local: true, data: {turbo_frame: "_top"}) do |form| %>
+<%= form_with(model: @reparation, local: true, method: :post, data: {turbo_frame: "_top"}) do |form| %>
   <% if @reparation.errors.any? %>
     <div id="error_explanation">
       <ul>

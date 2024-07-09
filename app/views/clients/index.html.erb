@@ -1,48 +1,53 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des Réparations - Réparateur Expert</title>
-    <%= stylesheet_link_tag('style') %>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des Réparations - Réparateur Expert</title>
+  <%= stylesheet_link_tag('style') %>
 </head>
 <body>
-    <header>
-        <h1>Réparateur Expert</h1>
-        <!-- <button onclick="document.getElementById('addClientModal').style.display='block'">Ajouter un Client</button>
-        <button onclick="document.getElementById('addRepairModal').style.display='block'">Ajouter une Réparation</button> -->
-        <%= link_to "Ajouter un Client", new_client_path, class: "button", data: { 
-	turbo_frame: "modal"
-        } %>
-        <%= link_to "Ajouter une Réparation", new_reparation_path, class:"button", data: { 
-	turbo_frame: "modal"
-        } %>
-    </header>
+  <header>
+    <h1>Réparateur Expert</h1>
+    <%= link_to "Ajouter un Client", new_client_path, class: "button", data: { turbo_frame: "modal" } %>
+    <%= link_to "Ajouter une Réparation", new_reparation_path, class: "button", data: { turbo_frame: "modal" } %>
+  </header>
 
+  <div class="container">
+    <h2>Réparations à Faire</h2>
 
-    <div class="container">
-       <h2>Réparations à Faire</h2>
-          <div class="repair-list-container">
-             <ul class="repair-list">
-                <% @reparations.each do |rep| %>
-                   <li>
-                      <h3>Client: <%= rep.client.nom %> // <%= rep.client.email %></h3>
-                      <p>Appareil: <%= rep.appareil %></p>
-                      <p>Description: <%= rep.description %></p>
-                      <p>Date de depot: <%= rep.date_depot %></p>
-                      <p>Statut: <%= rep.statut %></p>
-                      <br>
-                      <p><%= link_to "Modifier", edit_client_reparation_path(rep.client, rep), class: "button", data: {turbo_frame: "modal"} %></p>
-                      <br>
-                    </li>
-                 <% end %>
-               </ul>
-             </div>
-      </div>
+    <%= form_tag(clients_path, method: :get, class: "filter-form") do %>
+      <%= label_tag :statut, "Statut" %>
+      <%= select_tag :statut,
+        options_for_select([
+          ['À faire', 'À faire'],
+          ['En cours', 'En cours'],
+          ['Terminé', 'Terminé'],
+          ['Repris par le client', 'Repris par le client']
+        ], selected: @statut) %>
+      <%= submit_tag "Filtrer" %>
+    <% end %>
 
-      <footer>
-         <p>&copy; 2024 Réparateur Expert. Tous droits réservés.</p>
-      </footer>
+    <div class="repair-list-container">
+      <ul class="repair-list">
+        <% @reparations.each do |rep| %>
+          <li>
+            <h3>Client: <%= rep.client.nom %> // <%= rep.client.email %></h3>
+            <p>Appareil: <%= rep.appareil %></p>
+            <p>Description: <%= rep.description %></p>
+            <p>Date de depot: <%= rep.date_depot %></p>
+            <p>Statut: <%= rep.statut %></p>
+            <br>
+            <p><%= link_to "Modifier", edit_client_reparation_path(rep.client, rep), class: "button", data: { turbo_frame: "modal" } %></p>
+            <br>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 
+  <footer>
+    <p>&copy; 2024 Réparateur Expert. Tous droits réservés.</p>
+  </footer>
 </body>
 </html>

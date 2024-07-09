@@ -6,6 +6,10 @@ class ReparationsController < ApplicationController
      @reparation = Reparation.new
      @clients = Client.all
   end
+  
+  def filter
+    redirect_to clients_path(statut: params[:statut])
+  end
 
   def create
     @reparation = Reparation.new(new_reparation_params)

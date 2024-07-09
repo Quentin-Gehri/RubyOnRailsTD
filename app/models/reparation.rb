@@ -13,6 +13,6 @@ class Reparation < ApplicationRecord
   end
 
   def set_statut
-    self.statut = "A faire"
+    self.statut = "À faire"
   end
 end

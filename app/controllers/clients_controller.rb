@@ -1,15 +1,13 @@
 class ClientsController < ApplicationController
   def index
     @clients = Client.all
-    @reparations = Reparation.all
-  end
+    @statut = params[:statut]
 
-  def show
-    @client = Client.find(params[:id])
-  end
-
-  def new
-    @client = Client.new
+    if @statut.present?
+      @reparations = Reparation.where(statut: @statut)
+    else
+      @reparations = Reparation.all
+    end
   end
 
   def create
@@ -22,30 +20,9 @@ class ClientsController < ApplicationController
     end
   end
 
-  def edit
-    @client = Client.find(params[:id])
-  end
-
-  def update
-    @client = Client.find(params[:id])
-
-    if @client.update(client_params)
-      redirect_to root_path
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
-  def destroy
-    @client = Client.find(params[:id])
-    @client.destroy
-
-    redirect_to root_path, status: :see_other
-  end
-
   private
-    def client_params
-      params.require(:client).permit(:nom, :email)
-    end
-end
 
+  def client_params
+    params.require(:client).permit(:nom, :email)
+  end
+end
