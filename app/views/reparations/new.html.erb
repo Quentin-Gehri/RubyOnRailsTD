@@ -1,10 +1,12 @@
+<%= turbo_frame_tag "modal" do %>
+<div class="modal" id="addRepairModal">
+      <div class="modal-content">
+        <span class="close" onclick="document.getElementById('addRepairModal').style.display='none'">&times;</span>
 <h1>Ajouter une Réparation</h1>
 
-<%= form_with(model: @reparation, local: true) do |form| %>
+<%= form_with(model: @reparation, local: true, data: {turbo_frame: "_top"}) do |form| %>
   <% if @reparation.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@reparation.errors.count, "error") %> prohibited this reparation from being saved:</h2>
-
       <ul>
         <% @reparation.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -29,6 +31,9 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Ajouter" %>
   </div>
+<% end %>
+</div>
+</div>
 <% end %>

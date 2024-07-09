@@ -1,4 +1,4 @@
-<%= form_with(model: [@client, @reparation], local: true) do |form| %>
+<%= form_with(model: [@client, @reparation], local: true, data: {turbo_frame: "_top"}) do |form| %>
   <p>
     <%= form.label :appareil %><br>
     <%= form.text_field :appareil %>
@@ -12,7 +12,7 @@
     <%= form.select :statut, @statuts %>
   </div>
   <p>
-    <%= form.submit %>
+    <%= form.submit "Mettre à jour" %>
   </p>
 <% end %>
 

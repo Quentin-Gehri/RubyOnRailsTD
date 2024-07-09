@@ -20,7 +20,7 @@ header {
     flex: 1;
     display: flex;
     flex-direction: column;
-    overflow-y: auto; /* Allows the container to be scrollable */
+    overflow-y: auto; 
 }
 
 .repair-list-container {
@@ -63,15 +63,16 @@ footer {
 }
 
 .modal {
-    display: none;
+    display: block;
     position: fixed;
     z-index: 1;
-    left: 0;
-    top: 0;
+    padding: 2em;
+    left: 50%;
+    top: 50%;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
@@ -79,7 +80,15 @@ footer {
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 80%; 
+}
+
+.modal-content input {
+   width: 97%;
+}
+
+.modal-content input[type="submit"] {
+   width: 98.2%;
 }
 
 .close {
