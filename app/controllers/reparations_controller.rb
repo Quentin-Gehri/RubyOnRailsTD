@@ -7,10 +7,6 @@ class ReparationsController < ApplicationController
      @clients = Client.all
   end
   
-  def filter
-    redirect_to clients_path(statut: params[:statut])
-  end
-
   def create
     @reparation = Reparation.new(new_reparation_params)
     if @reparation.save
@@ -38,14 +34,14 @@ class ReparationsController < ApplicationController
   def set_client
     @client = Client.find_by(id: params[:client_id])
     unless @client
-       redirect_to root_path, alert: "Client not found"
+       redirect_to root_path, alert: "Client pas trouvé"
     end
   end
 
   def set_reparation
     @reparation = @client.reparations.find_by(id: params[:id])
     unless @reparation
-       redirect_to root_path, alert: "Reparation not found"
+       redirect_to root_path, alert: "Reparation pas trouvé"
     end
   end
 
