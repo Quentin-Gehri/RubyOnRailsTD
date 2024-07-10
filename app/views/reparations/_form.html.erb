@@ -1,4 +1,15 @@
 <%= form_with(model: [@client, @reparation], local: true, data: {turbo_frame: "_top"}) do |form| %>
+
+<% if @reparation.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @reparation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <p>
     <%= form.label :appareil %><br>
     <%= form.text_field :appareil %>
