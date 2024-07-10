@@ -6,6 +6,7 @@ class ClientsController < ApplicationController
     if @statut.present?
       @reparations = Reparation.where(statut: @statut)
     else
+      @statut = "Toutes"
       @reparations = Reparation.all
     end
   end
