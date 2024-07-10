@@ -10,6 +10,10 @@ class ClientsController < ApplicationController
     end
   end
 
+  def new
+    @client = Client.new
+  end
+
   def create
     @client = Client.new(client_params)
 
